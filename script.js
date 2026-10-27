@@ -884,7 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update hint
             if (galleryHint) {
                 if (totalCanvases === 1) {
-                    galleryHint.textContent = '✨ ututu lutuna epa lagi bobo ✨';
+                    galleryHint.textContent = '✨ ututu lutunya ayank aku lagi bobo ✨';
                 } else {
                     galleryHint.textContent = '✨ Foto ' + clearedSet.size + ' dari ' + totalCanvases + ' terbuka ✨';
                 }
@@ -903,7 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 if (galleryHint) {
                     if (totalCanvases === 1) {
-                        galleryHint.textContent = '✨ ututu lutuna epa lagi bobo ✨';
+                        galleryHint.textContent = '✨ ututu lutunya ayank aku lagi bobo  ✨';
                     } else {
                         galleryHint.textContent = 'Semua foto sudah terbuka! Geser kesamping untuk melihatnya';
                     }
