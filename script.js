@@ -245,7 +245,7 @@
         const pinPopupClose = document.getElementById('pin-popup-close');
 
         // DEFAULT PIN: Silakan ubah angka ini jika ingin PIN lain
-        const SECRET_PIN = "2426";
+        const SECRET_PIN = "2008";
 
         let pinAttempt = 0;
         let popupTimeout = null;
@@ -256,7 +256,7 @@
                 // Percobaan pertama: tampilkan foto kucing
                 showCat: true,
                 emoji: '',
-                message: 'Masa tanggal ultah aku lupa?',
+                message: 'Masa tanggal special kita lupa?',
                 buttonText: 'Iya iya maaf 😭'
             },
             {
@@ -557,9 +557,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     modalImg.style.objectFit = "cover";
                     modalImg.style.objectPosition = "center";
 
-                    const customCaption = card.getAttribute('data-caption');
                     const capEl = card.querySelector('.caption');
-                    const teksCaption = customCaption ? customCaption : (capEl ? capEl.innerText : "");
+                    const customCaption = card.getAttribute('data-caption');
+                    const teksCaption = (capEl && capEl.innerText.trim()) ? capEl.innerText.trim() : (customCaption || "");
                     if (modalCaption) modalCaption.innerText = teksCaption;
                 }
                 // D. JIKA YANG DIKLIK ADALAH GALERI CINTA
@@ -848,9 +848,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Tampilkan slider dari awal
+    // Tampilkan slider hanya jika ada lebih dari 1 foto
     if (gallerySlider) {
-        gallerySlider.classList.add('slider-visible');
+        if (totalCanvases > 1) {
+            gallerySlider.classList.add('slider-visible');
+        } else {
+            gallerySlider.style.display = 'none';
+        }
     }
 
     function checkCanvasCleared(canvas, index) {
@@ -879,14 +883,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update hint
             if (galleryHint) {
-                galleryHint.textContent = '✨ Foto ' + clearedSet.size + ' dari ' + totalCanvases + ' terbuka ✨';
+                if (totalCanvases === 1) {
+                    galleryHint.textContent = '✨ ututu lutuna epa lagi bobo ✨';
+                } else {
+                    galleryHint.textContent = '✨ Foto ' + clearedSet.size + ' dari ' + totalCanvases + ' terbuka ✨';
+                }
             }
 
             // Cek apakah semua sudah dibersihkan
             if (clearedSet.size >= totalCanvases) {
-                // Semua selesai — unlock untuk geser bebas
+                // Semua selesai
                 galleryUnlocked = true;
-                if (galleryScroll) {
+                if (galleryScroll && totalCanvases > 1) {
                     galleryScroll.classList.add('gallery-unlocked');
                     galleryScroll.style.overflowX = 'auto';
                     galleryScroll.style.touchAction = 'pan-x pan-y';
@@ -894,7 +902,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     galleryScroll.addEventListener('scroll', updateSlider);
                 }
                 if (galleryHint) {
-                    galleryHint.textContent = 'Semua foto sudah terbuka! Geser kesamping untuk melihatnya';
+                    if (totalCanvases === 1) {
+                        galleryHint.textContent = '✨ ututu lutuna epa lagi bobo ✨';
+                    } else {
+                        galleryHint.textContent = 'Semua foto sudah terbuka! Geser kesamping untuk melihatnya';
+                    }
                     galleryHint.classList.add('hint-unlocked');
                 }
             } else {
@@ -913,8 +925,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let drawMoveCount = 0;
 
         setTimeout(() => {
-            canvas.width = 220;
-            canvas.height = Math.round(220 * 16 / 9);
+            canvas.width = canvas.parentElement.offsetWidth || 240;
+            canvas.height = canvas.parentElement.offsetHeight || Math.round(canvas.width * 16 / 9);
 
             ctx.fillStyle = '#FFF0F5';
             ctx.fillRect(0, 0, canvas.width, canvas.height);

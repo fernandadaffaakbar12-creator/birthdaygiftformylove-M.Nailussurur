@@ -15,7 +15,7 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
-    background: url('img/dino-bg.jpg') no-repeat center center fixed;
+    background: url('img/sky-dino.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #4a001a;
     overflow-x: hidden;
@@ -64,7 +64,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at 30% 20%, #fff0f5 0%, #ffb6c1 40%, #ff1493 100%);
+    background: url('img/sky-clean.jpg') no-repeat center center;
+    background-size: cover;
     z-index: 99999;
     display: flex;
     justify-content: center;
@@ -559,7 +560,7 @@ body {
 }
 
 .stars {
-    background: url('img/dino-bg.jpg') no-repeat center center;
+    background: url('img/sky-dino.jpg') no-repeat center center;
     background-size: cover;
     z-index: -3;
 }
@@ -637,11 +638,18 @@ body {
    HALAMAN AWAL (Bouquet Bunga)
 ========================================= */
 #landing-page {
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('img/sky-clean.jpg') no-repeat center center;
+    background-size: cover;
     transition: opacity 0.5s ease;
+    z-index: 100;
 }
 
 .bouquet-container {
@@ -837,7 +845,7 @@ body {
     height: 330px;
     /* Tinggi foto DIPERBESAR (sebelumnya 270px) */
     transform-style: preserve-3d;
-    animation: spin-orbit 25s linear infinite;
+    animation: spin-orbit 30s linear infinite;
     z-index: 1;
 }
 
@@ -900,21 +908,29 @@ body {
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
-/* Jarak Orbit 4 kartu (berdekatan namun tidak terlalu rapat) */
+/* Jarak Orbit 6 kartu (berdekatan namun tidak terlalu rapat) */
 .item1 {
-    transform: rotateY(0deg) translateZ(190px);
+    transform: rotateY(0deg) translateZ(260px);
 }
 
 .item2 {
-    transform: rotateY(90deg) translateZ(190px);
+    transform: rotateY(60deg) translateZ(260px);
 }
 
 .item3 {
-    transform: rotateY(180deg) translateZ(190px);
+    transform: rotateY(120deg) translateZ(260px);
 }
 
 .item4 {
-    transform: rotateY(270deg) translateZ(190px);
+    transform: rotateY(180deg) translateZ(260px);
+}
+
+.item5 {
+    transform: rotateY(240deg) translateZ(260px);
+}
+
+.item6 {
+    transform: rotateY(300deg) translateZ(260px);
 }
 
 
@@ -1071,12 +1087,11 @@ body {
 ========================================= */
 .gallery-scroll {
     display: flex;
-    gap: 15px;
-    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
     padding: 20px 10px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    /* Firefox */
     touch-action: pan-y;
 }
 
@@ -1104,7 +1119,7 @@ body {
 .gallery-hint.hint-unlocked {
     color: rgba(80, 160, 80, 0.9);
     animation: none;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
 }
 
 /* Slider */
@@ -1145,15 +1160,16 @@ body {
 .scratch-card {
     position: relative;
     flex: 0 0 auto;
-    width: 220px;
+    width: 240px;
+    max-width: 85vw;
     aspect-ratio: 9 / 16;
-    border-radius: 10px;
+    border-radius: 14px;
     border: 2px solid rgba(255, 105, 180, 0.4) !important;
-    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3) !important;
     cursor: pointer;
-    scroll-snap-align: center;
     animation: float-photo 4s ease-in-out infinite;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .scratch-card:nth-child(even) {
@@ -1463,30 +1479,38 @@ body {
     }
 
     .orbit-track {
-        width: 180px;
-        /* Ukuran HP juga ikut diperbesar */
-        height: 270px;
+        width: 170px;
+        /* Ukuran HP disesuaikan proporsional untuk 6 kartu */
+        height: 255px;
     }
 
     .planet-caption {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
-    /* Menyesuaikan jarak orbit 4 kartu di HP */
+    /* Menyesuaikan jarak orbit 6 kartu di HP */
     .item1 {
-        transform: rotateY(0deg) translateZ(150px);
+        transform: rotateY(0deg) translateZ(205px);
     }
 
     .item2 {
-        transform: rotateY(90deg) translateZ(150px);
+        transform: rotateY(60deg) translateZ(205px);
     }
 
     .item3 {
-        transform: rotateY(180deg) translateZ(150px);
+        transform: rotateY(120deg) translateZ(205px);
     }
 
     .item4 {
-        transform: rotateY(270deg) translateZ(150px);
+        transform: rotateY(180deg) translateZ(205px);
+    }
+
+    .item5 {
+        transform: rotateY(240deg) translateZ(205px);
+    }
+
+    .item6 {
+        transform: rotateY(300deg) translateZ(205px);
     }
 
 
@@ -1660,7 +1684,8 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    background: transparent;
+    background: url('img/sky-clean.jpg') no-repeat center center;
+    background-size: cover;
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -1994,7 +2019,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: 99990;
-    background: radial-gradient(ellipse at center bottom, #301b00 0%, #1a0e00 40%, #0a0500 80%, #000000 100%);
+    background: url('img/sky-clean.jpg') no-repeat center center;
+    background-size: cover;
     opacity: 0;
     transition: opacity 0.8s ease;
     overflow-y: auto;
@@ -2083,9 +2109,15 @@ body {
 /* Pesan di atas kue */
 .candle-message {
     font-family: 'Caveat', cursive;
-    font-size: 1.6rem;
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(255, 105, 180, 0.9), 0 0 30px rgba(255, 20, 147, 0.5);
+    font-size: 1.7rem;
+    color: #5a0022;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 105, 180, 0.35);
+    border-radius: 20px;
+    padding: 10px 22px;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.15);
     margin-bottom: 30px;
     min-height: 60px;
     opacity: 0;
@@ -2633,23 +2665,24 @@ body {
     padding: 10px 20px;
     font-family: 'Outfit', sans-serif;
     font-size: 0.9rem;
-    font-weight: 400;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
+    font-weight: 500;
+    color: #5a0022;
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 182, 193, 0.5);
+    border: 1px solid rgba(255, 105, 180, 0.45);
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.15);
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-back-candle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff1493;
     transform: translateX(-50%) scale(1.05);
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    border-color: rgba(255, 105, 180, 0.8);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
 }
 
 /* =========================================
@@ -2657,8 +2690,9 @@ body {
 ========================================= */
 .tap-hint {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #5a0022;
     margin-top: 15px;
     margin-bottom: 60px;
     min-height: 20px;
@@ -2682,7 +2716,8 @@ body {
 .hold-progress-bar {
     width: 200px;
     height: 6px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 105, 180, 0.3);
     border-radius: 3px;
     margin-top: 20px;
     overflow: hidden;
@@ -2765,6 +2800,43 @@ body {
 }
 
 @media (max-width: 480px) {
+    .solar-system {
+        height: 420px;
+    }
+
+    .orbit-track {
+        width: 140px;
+        height: 215px;
+    }
+
+    .planet-caption {
+        font-size: 0.8rem;
+    }
+
+    .item1 {
+        transform: rotateY(0deg) translateZ(168px);
+    }
+
+    .item2 {
+        transform: rotateY(60deg) translateZ(168px);
+    }
+
+    .item3 {
+        transform: rotateY(120deg) translateZ(168px);
+    }
+
+    .item4 {
+        transform: rotateY(180deg) translateZ(168px);
+    }
+
+    .item5 {
+        transform: rotateY(240deg) translateZ(168px);
+    }
+
+    .item6 {
+        transform: rotateY(300deg) translateZ(168px);
+    }
+
     .title-little-things {
         font-size: 1.5em;
         padding: 15px 25px;
